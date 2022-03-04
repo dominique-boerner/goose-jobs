@@ -18,9 +18,12 @@ export default class CsvController {
                 {id: 'company', title: 'Unternehmen'},
                 {id: 'name', title: 'Stellenbezeichnung'},
                 {id: 'link', title: 'Link zur Stelle'},
-                {id: 'location', title: 'Ort'}
+                {id: 'location', title: 'Ort'},
+                {id: 'createdAt', title: 'Veröffentlicht am'},
             ],
         });
+
+        console.log("jobs coming", jobs)
 
         csvWriter.writeRecords(jobs).then(() => {
             console.log(`${filename}.csv wurde im /output Ordner generiert!`);
