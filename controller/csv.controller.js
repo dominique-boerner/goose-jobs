@@ -6,7 +6,7 @@ export default class CsvController {
 
     static generateCSV(jobs, filename) {
         console.log(`Es wurden ${jobs.length} aktuelle Ausbildungen bei Azubi.de gefunden.`);
-        console.log(`Lade Jobs herunter, bitte warten...`);
+        console.log(`Generiere CSV Datei, bitte warten...`);
 
         // create a new file
         fs.openSync(`${this.path}/${filename}.csv`, 'w')
@@ -22,8 +22,6 @@ export default class CsvController {
                 {id: 'createdAt', title: 'Veröffentlicht am'},
             ],
         });
-
-        console.log("jobs coming", jobs)
 
         csvWriter.writeRecords(jobs).then(() => {
             console.log(`${filename}.csv wurde im /output Ordner generiert!`);
