@@ -3,6 +3,7 @@ import {JSDOM} from "jsdom";
 import Job from "../models/job";
 import CsvController from "./csv.controller";
 import {Util} from "../util/util";
+const config = require("../config.json");
 
 export default class AzubiDeController {
     page = 1;
@@ -13,7 +14,7 @@ export default class AzubiDeController {
 
     getJobs() {
         console.log(`Suche auf azubi.de nach jobs ${this.radiusKm} Km um Duisburg im ${this.text}-Bereich - Seite ${this.page}...`)
-        const azubiDeUrl = `https://www.azubi.de/suche?page=${this.page}&query%5Blocation%5D=duisburg&query%5Bradius%5D=30&query%5Btext%5D=Büro`;
+        const azubiDeUrl = `https://www.azubi.de/suche?page=${this.page}&query%5Blocation%5D=${config.azubiDe.location}&query%5Bradius%5D=${config.azubiDe.location}&query%5Btext%5D=${config.azubiDe.job}`;
 
         (async () => {
             const response = await got(azubiDeUrl);
